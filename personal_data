@@ -1,0 +1,79 @@
+Nuestra aplicación recopila ciertos datos sensibles y restringidos para brindar planes de
+entrenamiento personalizados y seguros que siguen las ciencias del entrenamiento físico y
+las leyes del deporte. A continuación, explicamos cómo usamos estos datos:
+Frecuencia cardiaca en reposo, edad y sexo: Usamos estos datos para calcular la
+frecuencia cardíaca entrenable del usuario mediante el método de Karvonen,
+proporcionando un rango óptimo de pulsaciones para las rutinas cardiovasculares. Estos
+mismos datos son necesarios para determinar el Vo2 Max mediante las pruebas físicas
+de Queens College y Rockport, que evalúan y monitorean la mejora cardiovascular
+mensual del usuario.
+Somatotipo: Este dato afecta la estructura de la rutina, distribuyendo el tipo de
+ejercicios (series, biseries, triseries o circuitos) de acuerdo con las características físicas
+del usuario.
+Fibras musculares: Conocer el tipo de fibras musculares del usuario nos permite ajustar
+el tiempo de descanso entre series, maximizando la efectividad del entrenamiento.
+Usamos un método probado en entrenadores deportivos para obtener esta información.
+Lesiones: Esta información nos permite evitar ejercicios que puedan agravar la lesión
+del usuario, garantizando entrenamientos seguros y adecuados.
+Condición fitness: Ayuda a definir el nivel del usuario y ajustar la cantidad de ejercicios
+por rutina, así como la intensidad de entrenamiento (%RM).
+Índices de fuerza: Estos índices determinan el peso que debe usar el usuario en cada
+ejercicio, adaptando la intensidad según la fuerza máxima del usuario.
+Nivel de flexibilidad: Nos permite recomendar sesiones de flexibilidad específicas para
+mejorar esta capacidad del usuario.
+Cuestionario de salud: Las primeras preguntas corresponden al PAR-Q, que es crucial
+para determinar si el usuario debe consultar con un médico antes de realizar actividad
+física. El resto de las preguntas nos sirven para prevenir accidentes y asegurar que el
+usuario es consciente de su estado de salud.
+Mejora en la experiencia del usuario:
+Recopilar estos datos permite a la app ofrecer planes de entrenamiento personalizados y
+seguros, basados en principios científicos. De esta manera, el usuario recibe un
+entrenamiento adaptado a su condición física, reduciendo el riesgo de lesiones y
+maximizando los resultados a largo plazo.
+Consecuencias de no acceder a estos datos:
+Si no recopilamos estos datos, la aplicación no podría brindar entrenamientos
+personalizados ni adaptados a las características y necesidades del usuario. Esto no solo
+afectaría la calidad del entrenamiento, sino que podría exponer al usuario a riesgos de
+salud al no tomar en cuenta factores clave como lesiones o limitaciones físicas.
+Medidas de seguridad implementadas en la aplicación:
+Nuestra aplicación está diseñada con un enfoque sólido en la seguridad, utilizando
+tecnologías modernas como React Native para el frontend y Django Rest Framework (DRF)
+para el backend, lo que nos permite garantizar la protección de los datos sensibles de los
+usuarios.
+Seguridad en el Backend:
+1.
+DRF: Utilizamos las funcionalidades de seguridad integradas en DRF, como la
+encriptación de contraseñas y autenticación mediante JSON Web Tokens (JWT), lo
+que asegura que las sesiones de usuario sean seguras y que los tokens tengan un
+tiempo de vida limitado, con acceso controlado.
+Validación de contraseñas: Implementamos validadores que exigen el uso de
+contraseñas seguras, evitando contraseñas comunes o numéricas simples.
+CORS: Solo permitimos solicitudes desde nuestro dominio, protegiendo el acceso
+desde fuentes no autorizadas.
+Manejo seguro de hosts: Solo aceptamos hosts autorizados en producción,
+asegurando que las solicitudes provengan de fuentes confiables.
+Nginx y Gunicorn: Usamos estos servidores para gestionar las solicitudes de manera
+segura, con reglas estrictas que limitan el acceso a rutas específicas del proyecto y
+bloquean consultas a archivos sensibles como .env o rutas administrativas.
+Seguridad en la base de datos:
+2.
+Acceso restringido: Nuestra base de datos está configurada para no ser pública, lo
+que significa que solo la instancia EC2 que ejecuta la aplicación puede acceder a
+ella, incluso si las credenciales de la base de datos son conocidas.
+Credenciales protegidas: Las credenciales de la base de datos, así como otros datos
+sensibles, están almacenados de forma segura utilizando variables de entorno.
+Seguridad en la instancia de EC2:
+3.
+Acceso SSH limitado: Solo se permite el acceso SSH a la instancia de EC2 desde una
+dirección IP específica, reduciendo la posibilidad de accesos no autorizados.
+Reglas de seguridad: Implementamos reglas de seguridad estrictas en la instancia,
+garantizando que solo las rutas necesarias estén expuestas y que no se pueda
+acceder a información sensible.
+Validación de inputs en el frontend:
+4.
+Los datos enviados desde el frontend son validados para asegurar que solo se envíen
+strings en campos de texto y números en campos numéricos. Esto ayuda a prevenir
+ataques de inyección o manipulación de datos.
+Estas medidas garantizan que los datos sensibles de los usuarios se manejen de manera
+responsable y segura, cumpliendo con las mejores prácticas de la industria y minimizando
+el riesgo de accesos no autorizados o vulnerabilidades.
